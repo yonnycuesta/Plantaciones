@@ -1,25 +1,22 @@
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
-
+@livewireStyles
 @section('content_header')
-    <h1>Dashboard</h1>
+   <br>
 @stop
 
+
 @section('content')
-    <livewire:estanteria-controller />
+<livewire:tamanos/>
 @stop
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 
+@livewireScripts
 @section('js')
-    <script> console.log('Hi!');
 
-        window.livewire.on('tamanoStore', () => {
-            $('#exampleModal').modal('hide');
-        });
-
-    </script>
+    <script> console.log('Hi!'); </script>
 @stop

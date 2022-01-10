@@ -21,3 +21,6 @@ Route::get('/', function () {
 
 
 Route::view('/estanteria', 'estanteria')->name('estanteria');
+
+Route::view('tamano', 'tamano')->name('tamano');
+
