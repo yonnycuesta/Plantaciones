@@ -3,16 +3,16 @@
 @section('title', 'Dashboard')
 @livewireStyles
 @section('content_header')
-   <br>
+<br>
 @stop
 
 
 @section('content')
-<livewire:tamanos/>
+<livewire:etapa-controller />
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+<link rel="stylesheet" href="/css/admin_custom.css">
 
 @stop
 
@@ -26,7 +26,7 @@ function confirmar(id){
 
 Swal.fire({
 title: 'CONFIRMAR',
-text: '¿DESEAS ELIMINAR EL TAMAÑO?',
+text: '¿DESEAS ELIMINAR EL CLIENTE?',
 type:'warning',
 showCancelButton: true,
 confirmButtonColor: '#3085d6',

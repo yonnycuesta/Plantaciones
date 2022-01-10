@@ -11,8 +11,10 @@
         <div class="form-group">
           <label for="exampleInputEmail1">Nombre Estanteria</label>
           <input type="text" wire:model="nombre"  class="form-control" id="exampleInputEmail1" placeholder="Ingrese Nombre estanteria">
+          @if($errors->has('nombre'))
+              <p>{{$errors->first('nombre')}} </p>
+         @endif
         </div>
-
 
       <!-- /.card-body -->
 

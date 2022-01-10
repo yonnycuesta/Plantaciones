@@ -8,6 +8,6 @@
             <div class="col-md-6"></div>
         </div>
     </div>
-    @include('Tamanos.index')
+    @include('Tamanos.listar')
 </div>
 

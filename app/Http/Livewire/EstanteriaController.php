@@ -22,11 +22,12 @@ class EstanteriaController extends Component
 
     public function store()
     {
-
+        $this->validate(['nombre' => 'min:2|max:10|required|']);
         Estanteria::create([
             'name' => $this->nombre
         ]);
         $this->reset('nombre');
+        session()->flash('status', 'estanteria guardada  con exito :)');
     }
 
 
@@ -37,10 +38,10 @@ class EstanteriaController extends Component
         $this->nombre = $datos->name;
     }
 
-    public function actualizar(Estanteria $estanteria)
+    public function actualizar($id)
     {
-        dd($estanteria);
-        $datos = Estanteria::find($estanteria->id);
+
+        $datos = Estanteria::find($id);
 
         $datos->update([
 
@@ -48,4 +49,20 @@ class EstanteriaController extends Component
 
         ]);
     }
+
+
+
+    public function destroy($id)
+    {
+
+        $datos = Estanteria::find($id);
+
+        $datos->delete();
+        session()->flash('error', 'Cliente eliminado :)');
+    }
+
+
+    protected  $listeners = [
+        'deleteRow' => 'destroy'
+    ];
 }

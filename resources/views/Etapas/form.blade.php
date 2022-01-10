@@ -2,7 +2,7 @@
 
 <div class="card card-primary">
     <div class="card-header">
-      <h3 class="card-title">Crear Tamaño</h3>
+      <h3 class="card-title">Crear Etapa</h3>
     </div>
     <!-- /.card-header -->
     <!-- form start -->
@@ -13,15 +13,17 @@
           <input type="text" wire:model.defer="nombre"  class="form-control" id="exampleInputEmail1" placeholder="Ingrese Nombre">
         </div>
 
+
       <!-- /.card-body -->
 
       <div class="card-footer">
-       @if ($accion == 1)
-       <button  wire:click="store" class="btn  d-flex justify-content-center btn-primary">Guardar</button>
-       @endif
-       @if ($accion == 3)
-        <button  wire:click="actualizar" class="btn  d-flex justify-content-center btn-success">Actualizar</button>
-       @endif
+
+        @if ($accion == 1)
+        <button  wire:click="store" class="btn  d-flex justify-content-center btn-primary">Guardar</button>
+        @endif
+        @if ($accion == 3)
+         <button  wire:click="actualizar" class="btn  d-flex justify-content-center btn-success">Actualizar</button>
+        @endif
 
       </div>
 

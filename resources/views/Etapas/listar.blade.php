@@ -1,8 +1,9 @@
 <div class="row">
     <div class="col-12">
+
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
+                <h3 class="card-title">LISTADO DE ETAPAS</h3>
 
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
@@ -30,7 +31,7 @@
                     <tbody>
                         <tr>
 
-                            @foreach($Estanteria as $row)
+                            @foreach($etapas as $row)
 
                             <td> {{$row->id}}</td>
                             <td> {{$row->name}}</td>
@@ -53,13 +54,5 @@
 
 @section('scripts')
 
-<script type="text/javascript">
 
-
-    
-
-
-
-
-</script>
 @endsection

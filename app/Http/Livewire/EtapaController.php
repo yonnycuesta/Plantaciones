@@ -2,26 +2,25 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Tamano;
+use App\Models\Etapa;
 use Livewire\Component;
 
-class Tamanos extends Component
+class EtapaController extends Component
 {
     public $nombre = '';
-    public $tamano_id;
+    public $etapa_id;
     public $accion = 1;
-
 
     public function render()
     {
-        $tamanos = Tamano::all();
-        return view('livewire.tamanos', compact('tamanos'));
+        $etapas = Etapa::all();
+        return view('livewire.etapa-controller', compact('etapas'));
     }
 
     public function store()
     {
 
-        Tamano::create([
+        Etapa::create([
             'name' => $this->nombre
         ]);
         $this->reset('nombre');
@@ -30,36 +29,28 @@ class Tamanos extends Component
     public function editar($id)
     {
         $this->accion = 3;
-        $datos = Tamano::find($id);
-        $this->tamano_id = $datos->id;
+        $datos = Etapa::find($id);
+        $this->etapa_id = $datos->id;
         $this->nombre = $datos->name;
     }
 
     public function actualizar()
     {
-        $datos = Tamano::find($this->tamano_id);
+        $datos = Etapa::find($this->etapa_id);
         $datos->update([
             'name' => $this->nombre,
         ]);
         $this->accion = 1;
-
+        return view('livewire.etapa-controller');
     }
 
     public function destroy($id)
     {
-        $datos = Tamano::find($id);
+        $datos = Etapa::find($id);
         $datos->delete();
-
- 
-
+        session()->flash('error', 'Etapa eliminada :)');
     }
-
-
-
     protected  $listeners = [
         'deleteRow' => 'destroy'
     ];
-
-
-
 }
