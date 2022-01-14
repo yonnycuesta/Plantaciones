@@ -254,7 +254,7 @@ return [
         ],
         [
             'text' => 'Injertaciones',
-            'url'  => '#',
+            'url'  => 'injertacion',
             'icon' => 'fas fa-fw fa-user',
         ],
         [

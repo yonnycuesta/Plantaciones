@@ -1,5 +1,6 @@
 @include('parcial.alert')
 
+
 <div class="card card-primary">
     <div class="card-header">
       <h3 class="card-title">Crear Etapa</h3>
@@ -12,7 +13,10 @@
           <label for="exampleInputEmail1">Nombre</label>
           <input type="text" wire:model.defer="nombre"  class="form-control" id="exampleInputEmail1" placeholder="Ingrese Nombre">
         </div>
-
+        <div class="form-group">
+            <label for="exampleInputEmail1">Duración estimada</label>
+            <input type="number" wire:model.defer="duracionestimada"  class="form-control" id="exampleInputEmail1">
+          </div>
 
       <!-- /.card-body -->
 

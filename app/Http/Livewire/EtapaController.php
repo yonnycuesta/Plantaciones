@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class EtapaController extends Component
 {
-    public $nombre = '';
+    public $nombre, $duracionestimada;
     public $etapa_id;
     public $accion = 1;
 
@@ -21,9 +21,10 @@ class EtapaController extends Component
     {
 
         Etapa::create([
-            'name' => $this->nombre
+            'name' => $this->nombre,
+            'duracionEstimada' => $this->duracionestimada
         ]);
-        $this->reset('nombre');
+        $this->reset('nombre', 'duracionestimada');
     }
 
     public function editar($id)
@@ -32,6 +33,7 @@ class EtapaController extends Component
         $datos = Etapa::find($id);
         $this->etapa_id = $datos->id;
         $this->nombre = $datos->name;
+        $this->duracionestimada = $datos->duracionEstimada;
     }
 
     public function actualizar()
@@ -39,6 +41,7 @@ class EtapaController extends Component
         $datos = Etapa::find($this->etapa_id);
         $datos->update([
             'name' => $this->nombre,
+            'duracionEstimada' => $this->duracionestimada
         ]);
         $this->accion = 1;
         return view('livewire.etapa-controller');

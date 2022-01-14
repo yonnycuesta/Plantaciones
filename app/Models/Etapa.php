@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Etapa extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'duracionEstimada'];
+    //protected $primaryKey = 'etapas_id';
     use HasFactory;
 
 

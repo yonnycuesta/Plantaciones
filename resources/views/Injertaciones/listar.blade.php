@@ -1,14 +1,11 @@
 <div class="row">
     <div class="col-12">
-        <a href="" id="" class="btn btn-primary m-2">Crear Tamaño</a>
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">LISTADO DE TAMAÑOS</h3>
-
+                <h3 class="card-title">Responsive Hover Table</h3>
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                         <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-default">
                                 <i class="fas fa-search"></i>
@@ -23,17 +20,28 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>nombre</th>
+                            <th>Fecha</th>
+                            <th>Fecha estimada</th>
+                            <th>Observación</th>
+                            <th>Cantidad</th>
+                            <th>Estanteria</th>
+                            <th>Tamaño</th>
+                            <th>Etapa</th>
                             <th>Acciones</th>
-
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($tamanos as $key=>$row)
                         <tr>
-                            <td> {{$key + 1 }}</td>
-                            <td> {{$row->name}}</td>
 
+                            @foreach($injertacion as $row)
+                            <td> {{$row->id}}</td>
+                            <td> {{ $row->fechaInjertacion }} </td>
+                            <td> {{ $row->fechaEstimada }} </td>
+                            <td> {{ $row->observacion }} </td>
+                            <td> {{ $row->cantidad }} </td>
+                            <td> {{ $row->name_estant }} </td>
+                            <td> {{ $row->name_tama }} </td>
+                            <td> {{ $row->name_etap }}</td>
                             <td>
                                 @include('parcial.acciones')
                             </td>
@@ -50,3 +58,15 @@
     </div>
 </div>
 
+@section('scripts')
+
+<script type="text/javascript">
+
+
+
+
+
+
+
+</script>
+@endsection

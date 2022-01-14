@@ -18,6 +18,7 @@ class CreateInjertacionsTable extends Migration
             $table->date('fechaInjertacion');
             $table->date('fechaEstimada');
             $table->text('observacion')->nullable();
+            $table->integer('cantidad');
             $table->bigInteger('estanteria_id')->unsigned();
             $table->bigInteger('tamano_id')->unsigned();
             $table->bigInteger('etapa_id')->unsigned();

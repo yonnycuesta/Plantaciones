@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Injertacion extends Model
 {
-    protected $fillable = ['fechaInjertacion', 'fechaEstimada', 'observacion', 'estanteria_id', 'tamano_id', 'etapa_id'];
+    protected $fillable = ['fechaInjertacion', 'fechaEstimada', 'observacion','cantidad', 'estanteria_id', 'tamano_id', 'etapa_id'];
+
+    //protected $primaryKey = 'injertacions_id';
     use HasFactory;
 
     /**
@@ -16,7 +18,7 @@ class Injertacion extends Model
      */
     public function tamano()
     {
-        return $this->hasOne(Tamano::class, 'id', 'tamano_id');
+        return $this->hasOne(Tamano::class);
     }
     /**
      * Obtener la estanteria asociada con la injertacion.

@@ -16,6 +16,7 @@ class CreateEtapasTable extends Migration
         Schema::create('etapas', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50)->require();
+            $table->integer('duracionEstimada')->nullable();
             $table->timestamps();
             $table->engine = 'InnoDB';
         });

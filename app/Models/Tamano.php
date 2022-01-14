@@ -17,7 +17,7 @@ class Tamano extends Model
      */
     public function patronaje()
     {
-        return $this->belongsTo(Patronaje::class, 'tamano_id', 'id');
+        return $this->belongsTo(Patronaje::class);
     }
     /**
      * Obtener la injertacion perteneciente al tamaño.

@@ -23,7 +23,8 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>nombre</th>
+                            <th>Nombre</th>
+                            <th>Duración estimada</th>
                             <th>Acciones</th>
 
                         </tr>
@@ -35,7 +36,7 @@
 
                             <td> {{$row->id}}</td>
                             <td> {{$row->name}}</td>
-
+                            <td> {{$row->duracionEstimada}}</td>
                             <td>
                                 @include('parcial.acciones')
                             </td>
