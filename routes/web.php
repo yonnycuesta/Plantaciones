@@ -27,3 +27,5 @@ Route::view('etapa', 'etapa')->name('etapa');
 
 Route::view('injertacion', 'injertacion')->name('injertacion');
 
+Route::view('patronaje', 'patronaje')->name('patronaje');
+

@@ -259,7 +259,7 @@ return [
         ],
         [
             'text' => 'Patronajes',
-            'url'  => '#',
+            'url'  => 'patronaje',
             'icon' => 'fas fa-fw fa-user',
         ],
         [

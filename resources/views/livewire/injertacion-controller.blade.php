@@ -1,6 +1,4 @@
 <div>
-
-
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -10,5 +8,4 @@
             </div>
         </div>
         @include('Injertaciones.listar')
-
 </div>

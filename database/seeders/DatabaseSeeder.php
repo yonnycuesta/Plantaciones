@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             TamanoSeeder::class,
+            EtapaSeeder::class,
+            Estanteria::class,
         ]);
     }
 }

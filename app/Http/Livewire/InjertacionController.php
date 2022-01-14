@@ -43,6 +43,11 @@ class InjertacionController extends Component
         return view('livewire.injertacion-controller', compact('injertacion'));
     }
 
+    public function limpiar()
+    {
+        $this->observacion = '';
+        $this->cantidad = '';
+    }
     public function store()
     {
 
@@ -56,6 +61,7 @@ class InjertacionController extends Component
             'etapa_id' => $this->id_etapa,
         ]);
         $this->accion = 1;
+        $this->limpiar();
     }
 
     public function editar($id)

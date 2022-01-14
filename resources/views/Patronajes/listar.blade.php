@@ -1,14 +1,11 @@
 <div class="row">
     <div class="col-12">
-
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">LISTADO DE ETAPAS</h3>
-
+                <h3 class="card-title">Patronajes</h3>
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
                         <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-default">
                                 <i class="fas fa-search"></i>
@@ -23,36 +20,38 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nombre</th>
-                            <th>Duración estimada</th>
+                            <th>Fecha</th>
+                            <th>Fecha estimada</th>
+                            <th>Observación</th>
+                            <th>Cantidad</th>
+                            <th>Estanteria</th>
+                            <th>Tamaño</th>
+                            <th>Etapa</th>
                             <th>Acciones</th>
-
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
 
-                            @foreach($etapas as $row)
-
+                            @foreach($patronaje as $row)
                             <td> {{$row->id}}</td>
-                            <td> {{$row->name}}</td>
-                            <td> {{$row->duracionEstimada}}</td>
+                            <td> {{ $row->fechaPatronaje }} </td>
+                            <td> {{ $row->fechaEstimada }} </td>
+                            <td> {{ $row->observacion }} </td>
+                            <td> {{ $row->cantidad }} </td>
+                            <td> {{ $row->name_estant }} </td>
+                            <td> {{ $row->name_tama }} </td>
+                            <td> {{ $row->name_etap }}</td>
                             <td>
                                 @include('parcial.acciones')
                             </td>
                         </tr>
 
-                      
                         @endforeach
-                       
                     </tbody>
-                    
                 </table>
             </div>
             <!-- /.card-body -->
-            <div class="card-footer">
-                {{ $etapas->links() }}
-            </div>
         </div>
         <!-- /.card -->
     </div>
@@ -60,5 +59,8 @@
 
 @section('scripts')
 
+<script type="text/javascript">
 
+
+</script>
 @endsection

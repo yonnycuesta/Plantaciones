@@ -4,16 +4,20 @@ namespace App\Http\Livewire;
 
 use App\Models\Etapa;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class EtapaController extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+    
     public $nombre, $duracionestimada;
     public $etapa_id;
     public $accion = 1;
 
     public function render()
     {
-        $etapas = Etapa::all();
+        $etapas = Etapa::paginate(10);
         return view('livewire.etapa-controller', compact('etapas'));
     }
 

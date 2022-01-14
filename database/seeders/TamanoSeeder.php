@@ -18,14 +18,24 @@ class TamanoSeeder extends Seeder
     public function run()
     {
 
-        $faker = Faker::create();
+        $name_tamano =[
+            'Grande',
+            'Pequeño',
+            'Mediano',
+            'Promedio'
+        ];
+
+        foreach($name_tamano as $key => $value)
+            DB::table('tamanos')->insert([
+                'name' => $value,
+            ]);
+        }
+
+        /*$faker = Faker::create();
 
         foreach(range(1, 20) as $i){
             DB::table('tamanos')->insert([
                 'name' => $faker->sentence(1),
             ]);
-        }
-
-
-    }
+        }*/
 }
