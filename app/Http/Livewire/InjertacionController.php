@@ -5,9 +5,12 @@ namespace App\Http\Livewire;
 use App\Models\Estanteria;
 use App\Models\Etapa;
 use App\Models\Injertacion;
+use App\Models\Patronaje;
+use App\Models\Producto;
 use App\Models\Tamano;
 use Carbon\Carbon;
 use Livewire\Component;
+use Brian2694\Toastr\Facades\Toastr;
 
 class InjertacionController extends Component
 {
@@ -19,11 +22,26 @@ class InjertacionController extends Component
 
     public $fechaAct;
     public $etapa_dur;
+    public $all_patronajes;
+
+    public $opc = 1;
+    public $option_patronaje, $op;
+    public $etapamaestra;
+    public $vista = 1;
+    public $query;
+
     public function render()
     {
-        $this->datosEstanteria = Estanteria::all();
+        if ($this->opc == 1) {
+            $this->datosEstanteria = Estanteria::all()->where('status', '=', 'available');
+        } else {
+            $this->datosEstanteria = Estanteria::all();
+        }
+
+
         $this->datosTamano = Tamano::all();
-        $this->datosEtapa = Etapa::all();
+        $this->datosEtapa = Etapa::select()->where('etapa_maestra', 1)->get();
+
 
         //$this->etapa_dur = Etapa::find($this->id_etapa)->get('duracionEstimada');
         $this->etapa_dur = Etapa::select('duracionEstimada')->where('id', $this->id_etapa)->value('duracionEstimada');
@@ -40,7 +58,25 @@ class InjertacionController extends Component
             ->select('ep.name as name_etap', 'injertacions.id', 'tm.name as name_tama', 'fechaInjertacion', 'et.name as name_estant', 'fechaEstimada', 'observacion', 'cantidad')
             ->get();
 
-        return view('livewire.injertacion-controller', compact('injertacion'));
+        $patronaje = Patronaje::join('etapas as ep', 'ep.id', 'patronajes.etapa_id')
+            ->join('tamanos as tm', 'tm.id', 'patronajes.tamano_id')
+            ->join('estanterias as et', 'et.id', 'patronajes.estanteria_id')
+            ->select('ep.name as name_etap', 'patronajes.id', 'tm.name as name_tama', 'fechaPatronaje', 'et.name as name_estant', 'fechaEstimada', 'observacion', 'cantidad')
+            ->get();
+
+        if (!is_null($this->option_patronaje)) {
+            $data = Patronaje::find($this->option_patronaje);
+            $this->observacion = $data->observacion;
+            $this->cantidad = $data->cantidad;
+            $this->id_estanteria = $data->estanteria_id;
+            $this->id_tamano = $data->tamano_id;
+        }
+
+        if ($this->vista == 1) {
+            return view('livewire.injertacion-controller', compact('injertacion', 'patronaje'));
+        } else {
+            return view('livewire.vista-combinada-injertacion', compact('injertacion', 'patronaje'));
+        }
     }
 
     public function limpiar()
@@ -50,18 +86,42 @@ class InjertacionController extends Component
     }
     public function store()
     {
+        if ($this->opc == 1) {
+            Estanteria::find($this->id_estanteria)->update([
+                'status' => 'busy',
+            ]);
+            $this->query = Producto::select()->where('etapa_id', $this->id_etapa)->first();
 
-        Injertacion::create([
-            'fechaInjertacion' => $this->fechaAct,
-            'fechaEstimada' => $this->fechaestimada,
-            'observacion' => $this->observacion,
-            'cantidad' => $this->cantidad,
-            'estanteria_id' => $this->id_estanteria,
-            'tamano_id' => $this->id_tamano,
-            'etapa_id' => $this->id_etapa,
-        ]);
-        $this->accion = 1;
-        $this->limpiar();
+            Producto::find($this->query->id)->update([
+                'cantidad_demandada' => $this->cantidad,
+            ]);
+
+            Injertacion::create([
+                'fechaInjertacion' => $this->fechaAct,
+                'fechaEstimada' => $this->fechaestimada,
+                'observacion' => $this->observacion,
+                'cantidad' => $this->cantidad,
+                'estanteria_id' => $this->id_estanteria,
+                'tamano_id' => $this->id_tamano,
+                'etapa_id' => $this->id_etapa,
+            ]);
+            $this->accion = 1;
+            $this->limpiar();
+            Toastr::success('Datos Guardado Exitosamente!');
+        } else {
+            Injertacion::create([
+                'fechaInjertacion' => $this->fechaAct,
+                'fechaEstimada' => $this->fechaestimada,
+                'observacion' => $this->observacion,
+                'cantidad' => $this->cantidad,
+                'estanteria_id' => $this->id_estanteria,
+                'tamano_id' => $this->id_tamano,
+                'etapa_id' => $this->id_etapa,
+            ]);
+            $this->accion = 1;
+            $this->limpiar();
+            Toastr::success('Datos Guardado Exitosamente!');
+        }
     }
 
     public function editar($id)
@@ -92,6 +152,7 @@ class InjertacionController extends Component
             'etapa_id' => $this->id_etapa,
         ]);
         $this->accion = 1;
+        Toastr::success('Datos Actualizado Exitosamente!');
         return view('livewire.injertacion-controller');
     }
 }

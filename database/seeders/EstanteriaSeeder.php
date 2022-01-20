@@ -17,9 +17,10 @@ class EstanteriaSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach(range(1, 80) as $i){
+        foreach (range(1, 15) as $i) {
             DB::table('estanterias')->insert([
                 'name' => $faker->sentence(1),
+                'status' => 1
             ]);
         }
     }

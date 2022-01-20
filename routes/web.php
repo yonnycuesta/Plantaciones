@@ -28,4 +28,6 @@ Route::view('etapa', 'etapa')->name('etapa');
 Route::view('injertacion', 'injertacion')->name('injertacion');
 
 Route::view('patronaje', 'patronaje')->name('patronaje');
+Route::view('producto', 'producto')->name('producto');
+Route::view('cliente', 'cliente')->name('cliente');
 

@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 @livewireStyles
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1></h1>
 @stop
 
 
@@ -25,7 +25,7 @@
 
         Swal.fire({
       title: 'CONFIRMAR',
-      text: '¿DESEAS ELIMINAR EL ESTANTERIA',
+      text: '¿DESEAS ELIMINAR LA ESTANTERIA?',
       type:'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

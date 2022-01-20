@@ -1,6 +1,15 @@
+{!! Toastr::message() !!}
 <div class="row">
     <div class="col-12">
-        <div class="card">
+       <div class="form-group">
+        <label for="" class="exampleInputEmail1">Seleccionar vista</label>
+        <select class="form-control" wire:model="vista" value="" aria-label="Default select example">
+            <option  value="" >Vista 1</option> 
+            <option  value="" >Vista 2</option> 
+          </select>
+       </div>
+
+        <div class="card mt-4">
             <div class="card-header">
                 <h3 class="card-title">Patronajes</h3>
                 <div class="card-tools">
@@ -19,7 +28,7 @@
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            
                             <th>Fecha</th>
                             <th>Fecha estimada</th>
                             <th>Observación</th>
@@ -34,7 +43,7 @@
                         <tr>
 
                             @foreach($patronaje as $row)
-                            <td> {{$row->id}}</td>
+                            
                             <td> {{ $row->fechaPatronaje }} </td>
                             <td> {{ $row->fechaEstimada }} </td>
                             <td> {{ $row->observacion }} </td>

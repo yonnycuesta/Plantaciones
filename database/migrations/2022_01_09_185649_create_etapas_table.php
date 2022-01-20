@@ -17,6 +17,7 @@ class CreateEtapasTable extends Migration
             $table->id();
             $table->string('name', 50)->require();
             $table->integer('duracionEstimada')->nullable();
+            $table->integer('etapa_maestra')->nullable();
             $table->timestamps();
             $table->engine = 'InnoDB';
         });

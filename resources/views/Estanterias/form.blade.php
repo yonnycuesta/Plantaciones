@@ -19,7 +19,12 @@
       <!-- /.card-body -->
 
       <div class="card-footer">
+        @if ($accion == 1)
         <button  wire:click="store" class="btn  d-flex justify-content-center btn-primary">Guardar</button>
+        @endif
+        @if ($accion == 3)
+         <button  wire:click="actualizar" class="btn  d-flex justify-content-center btn-success">Actualizar</button>
+        @endif
 
       </div>
 

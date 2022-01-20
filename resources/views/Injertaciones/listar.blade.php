@@ -1,5 +1,14 @@
+{!! Toastr::message() !!}
 <div class="row">
+   
     <div class="col-12">
+        <div class="form-group">
+            <label for="" class="exampleInputEmail1">Seleccionar vista</label>
+            <select class="form-control" wire:model="vista" value="" aria-label="Default select example">
+                <option  value="" >Vista 1</option> 
+                <option  value="" >Vista 2</option> 
+              </select>
+           </div>
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Injertaciones</h3>
@@ -19,7 +28,7 @@
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            
                             <th>Fecha</th>
                             <th>Fecha estimada</th>
                             <th>Observación</th>
@@ -33,8 +42,7 @@
                     <tbody>
                         <tr>
 
-                            @foreach($injertacion as $row)
-                            <td> {{$row->id}}</td>
+                            @foreach($injertacion as $row)                       
                             <td> {{ $row->fechaInjertacion }} </td>
                             <td> {{ $row->fechaEstimada }} </td>
                             <td> {{ $row->observacion }} </td>
@@ -58,15 +66,9 @@
     </div>
 </div>
 
-@section('scripts')
+@section('css')
 
-<script type="text/javascript">
+@stop
+@section('js')
 
-
-
-
-
-
-
-</script>
-@endsection
+@stop

@@ -35,7 +35,7 @@ class EtapaSeeder extends Seeder
         foreach($name_etapa as $key => $value)
             DB::table('etapas')->insert([
                 'name' => $value,
-                'duracionEstimada' => $faker->numberBetween(1, 100)
+                'duracionEstimada' => $faker->numberBetween(1, 12)
             ]);
         }
 }

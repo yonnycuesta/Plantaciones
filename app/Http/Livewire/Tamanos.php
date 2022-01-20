@@ -4,9 +4,14 @@ namespace App\Http\Livewire;
 
 use App\Models\Tamano;
 use Livewire\Component;
+use Livewire\WithPagination;
+use Brian2694\Toastr\Facades\Toastr;
 
 class Tamanos extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
     public $nombre = '';
     public $tamano_id;
     public $accion = 1;
@@ -14,7 +19,7 @@ class Tamanos extends Component
 
     public function render()
     {
-        $tamanos = Tamano::all();
+        $tamanos = Tamano::paginate(10);
         return view('livewire.tamanos', compact('tamanos'));
     }
 
@@ -25,6 +30,7 @@ class Tamanos extends Component
             'name' => $this->nombre
         ]);
         $this->reset('nombre');
+        Toastr::success('Datos Guardado Exitosamente!');
     }
 
     public function editar($id)
@@ -42,6 +48,7 @@ class Tamanos extends Component
             'name' => $this->nombre,
         ]);
         $this->accion = 1;
+        Toastr::success('Datos Actualizado Exitosamente!');
 
     }
 
@@ -49,12 +56,9 @@ class Tamanos extends Component
     {
         $datos = Tamano::find($id);
         $datos->delete();
-
- 
+        Toastr::error('Tamaño Eliminado Exitosamente!');
 
     }
-
-
 
     protected  $listeners = [
         'deleteRow' => 'destroy'

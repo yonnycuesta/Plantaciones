@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>SistPlantaciones</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -243,29 +243,39 @@ return [
         ],
         ['header' => 'Panel Administrador'],
         [
+            'text' => 'Clientes',
+            'url'  => 'cliente',
+            'icon' => 'fas fa-users',
+        ],
+        [
             'text' => 'Estanterias',
             'url'  => 'estanteria',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-border-all',
         ],
         [
             'text' => 'Etapas',
             'url'  => 'etapa',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-border-all',
         ],
         [
             'text' => 'Injertaciones',
             'url'  => 'injertacion',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-border-all',
         ],
         [
             'text' => 'Patronajes',
             'url'  => 'patronaje',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-border-all',
+        ],
+        [
+            'text' => 'Productos',
+            'url'  => 'producto',
+            'icon' => 'fas fa-fw fa-border-all',
         ],
         [
             'text' => 'Tamaños',
             'url'  => 'tamano',
-            'icon' => 'fas fa-stamp',
+            'icon' => 'fas fa-fw fa-border-all',
         ],
 
     ],
@@ -358,6 +368,26 @@ return [
                     'asset' => true,
                     'location' => '//cdn.jsdelivr.net/npm/sweetalert2@11',
                 ],
+            ],
+        ],
+        'Toastr' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => false,
+                    'location' => '//cdn.bootcss.com/toastr.js/latest/css/toastr.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.bootcss.com/jquery/2.2.4/jquery.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => false,
+                    'location' => '//cdn.bootcss.com/toastr.js/latest/js/toastr.min.js'
+                ]
             ],
         ],
         'Pace' => [

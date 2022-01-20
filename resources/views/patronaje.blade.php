@@ -26,7 +26,7 @@ function confirmar(id){
 
 Swal.fire({
 title: 'CONFIRMAR',
-text: '¿DESEAS ELIMINAR EL CLIENTE?',
+text: '¿DESEAS ELIMINAR EL PATRONAJE?',
 type:'warning',
 showCancelButton: true,
 confirmButtonColor: '#3085d6',

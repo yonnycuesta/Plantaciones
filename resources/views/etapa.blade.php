@@ -26,7 +26,7 @@ function confirmar(id){
 
 Swal.fire({
 title: 'CONFIRMAR',
-text: '¿DESEAS ELIMINAR EL CLIENTE?',
+text: '¿DESEAS ELIMINAR LA ETAPA?',
 type:'warning',
 showCancelButton: true,
 confirmButtonColor: '#3085d6',
