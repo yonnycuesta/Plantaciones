@@ -17,18 +17,11 @@ class InjertacionController extends Component
     public $fechaestimada, $observacion, $id_etapa,
         $id_tamano, $id_estanteria, $datosTamano, $datosEtapa, $datosEstanteria, $cantidad;
 
-    public $id_injertacion;
+    public $id_injertacion, $fechaAct, $etapa_dur, $all_patronajes, $query, $option_patronaje, $etapamaestra, $op;
     public $accion = 1;
 
-    public $fechaAct;
-    public $etapa_dur;
-    public $all_patronajes;
-
     public $opc = 1;
-    public $option_patronaje, $op;
-    public $etapamaestra;
     public $vista = 1;
-    public $query;
 
     public function render()
     {
@@ -92,8 +85,11 @@ class InjertacionController extends Component
             ]);
             $this->query = Producto::select()->where('etapa_id', $this->id_etapa)->first();
 
+            $totalStock = $this->query->stock - $this->cantidad;
+
             Producto::find($this->query->id)->update([
                 'cantidad_demandada' => $this->cantidad,
+                'stock' => $totalStock,
             ]);
 
             Injertacion::create([
@@ -154,5 +150,12 @@ class InjertacionController extends Component
         $this->accion = 1;
         Toastr::success('Datos Actualizado Exitosamente!');
         return view('livewire.injertacion-controller');
+    }
+    public function eliminar($id)
+    {
+        $datos = Injertacion::find($id);
+        $this->id_injertacion = $datos->id;
+        $datos->delete();
+        Toastr::success('Datos Eliminado Exitosamente!');
     }
 }

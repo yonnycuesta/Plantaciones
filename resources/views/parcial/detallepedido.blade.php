@@ -1,0 +1,1 @@
+<a class="btn btn-warning  fas fa-eye"  href="{{ url('detalle-pedido') }}"></a>

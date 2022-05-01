@@ -16,8 +16,7 @@ class EstanteriaController extends Component
     public $nombre = '';
     public $accion = 1;
 
-    public $estanteria_id;
-    public $table_search;
+    public $estanteria_id, $table_search;
 
     public function render()
 

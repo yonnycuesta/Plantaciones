@@ -273,6 +273,16 @@ return [
             'icon' => 'fas fa-fw fa-border-all',
         ],
         [
+            'text' => 'Pedidos',
+            'url'  => 'pedido',
+            'icon' => 'fas fa-fw fa-border-all',
+        ],
+        [
+            'text' => null,
+            'url'  => 'detalle-pedido',
+            'icon' => null,
+        ],
+        [
             'text' => 'Tamaños',
             'url'  => 'tamano',
             'icon' => 'fas fa-fw fa-border-all',

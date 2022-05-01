@@ -30,4 +30,7 @@ Route::view('injertacion', 'injertacion')->name('injertacion');
 Route::view('patronaje', 'patronaje')->name('patronaje');
 Route::view('producto', 'producto')->name('producto');
 Route::view('cliente', 'cliente')->name('cliente');
+Route::view('pedido', 'pedido')->name('pedido');
+
+Route::view('detalle-pedido', 'detalle-pedido')->name('detalle-pedido');
 

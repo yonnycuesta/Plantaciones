@@ -13,8 +13,7 @@ class Tamanos extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $nombre = '';
-    public $tamano_id;
-    public $accion = 1;
+    public $tamano_id, $accion = 1;
 
 
     public function render()
@@ -49,7 +48,6 @@ class Tamanos extends Component
         ]);
         $this->accion = 1;
         Toastr::success('Datos Actualizado Exitosamente!');
-
     }
 
     public function destroy($id)
@@ -57,13 +55,9 @@ class Tamanos extends Component
         $datos = Tamano::find($id);
         $datos->delete();
         Toastr::error('Tamaño Eliminado Exitosamente!');
-
     }
 
     protected  $listeners = [
         'deleteRow' => 'destroy'
     ];
-
-
-
 }
